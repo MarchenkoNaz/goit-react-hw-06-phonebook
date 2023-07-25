@@ -1,20 +1,16 @@
-import React from 'react';
+import { changeFilter } from "Redux/filterSlices";
+import { useDispatch } from "react-redux";
 
-import PropTypes from 'prop-types';
 
-
-const Filter = ({ filter, onFilter }) => {
+const Filter = () => {
+	const dispatch = useDispatch()
 	return (<>
 		<div className="mb-3 container-sm mt-3 m-2">
 			<label htmlFor="exampleInputEmail1" className="form-label">Search contact</label>
-			<input className="form-control" type="text" value={filter} onChange={onFilter} />
+			<input className="form-control" type="text" onChange={(e) => dispatch(changeFilter(e.target.value))} />
 		</div>	</>
 	);
 }
 
-Filter.propTypes = {
-	filter: PropTypes.string.isRequired,
-	onFilter: PropTypes.func.isRequired,
-};
 
 export default Filter;
